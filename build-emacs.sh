@@ -18,7 +18,7 @@
 
 ROOT_DIR="`pwd`"
 BUILD_DIR=/tmp/emacs-build
-SRC_DIR=$HOME/Documents/emacs/
+SRC_DIR=$HOME/Downloads/emacs/
 GIT_VERSION=emacs-git-version.el
 SITELISP=/Applications/Emacs.app/Contents/Resources/site-lisp
 BREW=$(brew --prefix)
@@ -90,10 +90,10 @@ echo "
 "
 
 # Note that this applies all patches in 'patches' dir
-for f in ${PATCH_LIST}; do
-    echo "Applying patch `basename $f`"
-    patch -p1 -i $f
-done
+# for f in ${PATCH_LIST}; do
+#     echo "Applying patch `basename $f`"
+#     patch -p1 -i $f
+# done
 
 # ======================================================
 # Info settings
@@ -154,14 +154,17 @@ echo "
 # https://www.topbug.net/blog/2016/11/10/installing-emacs-from-source-avoid-the-conflict-of-ctags/
 ./configure \
     --with-dbus \
-    --with-ns \
+    --prefix=/usr/local \
     --with-native-compilation \
     --with-xwidgets \
     --with-modules \
     --with-mailutils \
     --with-json \
     --without-compress-install \
+    --with-tree-sitter \
+    --with-imagemagick \
     --program-transform-name='s/^ctags$/emctags/' \
+    --with-ns \
 
 echo "
 # ======================================================
